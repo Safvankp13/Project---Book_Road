@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Review</title>
+    <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+    <h1>Edit Book Review</h1>
+    <form action="/edit/<%= book.id %>" method="post">
+        <img src="<%= book.book_cover %>" alt="Book Cover" class="book-cover">
+        
+        <label for="isbn">ISBN:</label>
+        <input type="text" name="isbn" id="isbn" value="<%= book.isbn %>" required readonly>
+
+        <label for="name">Your Name:</label>
+        <input type="text" name="name" id="name" value="<%= book.name %>" required>
+
+        <label for="author">Author:</label>
+        <input type="text" name="author" id="author" value="<%= book.author %>" required>
+
+        <label for="review">Your Review:</label>
+        <textarea name="review" id="review" rows="5" cols="30" required><%= book.review %></textarea>
+
+        <button type="submit" class="form-submit">Update Review</button>
+    </form>
+</body>
+</html>

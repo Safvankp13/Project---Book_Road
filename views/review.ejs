@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+    <form action="/review" method="post">
+        <% if (locals.cover) { %>
+            <img src="<%= cover %>" alt="Book Cover">
+            <br>
+            
+            <label for="isbn">ISBN:</label>
+            <input type="text" name="isbn" id="isbn" value="<%= isbn %>" readonly>
+
+            <label for="name">Your Name:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author" required>
+
+            <label for="review">Your Review:</label>
+            <textarea name="review" id="review" rows="5" cols="30" required></textarea>
+
+            <button type="submit">Submit Review</button>
+        <% } %>
+    </form>
+</body>
+</html>

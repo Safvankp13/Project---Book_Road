@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Reviews</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+    <form action="/user" method="post" class="search-form">
+        <label for="user" class="form-label">Search a Book using ISBN:</label>
+        <input type="text" name="ISBN" id="user" class="form-input" placeholder="Enter ISBN" required>
+        <input type="submit" class="form-submit" value="Search">
+    </form>
+
+    <h1>Book Reviews</h1>
+
+    <% books.forEach(book => { %>
+        <div class="review-box">
+            <img src="<%= book.book_cover %>" alt="Book cover">
+            <div class="review-content">
+                <h2><%= book.title %></h2>
+                <p class="author"><strong>Author:</strong> <%= book.author %></p>
+                <p class="description"><strong>Review:</strong> <%= book.review %></p>
+                <div class="info">
+                    <span class="author"><strong>Reviewed By:</strong> <%= book.name %></span>
+                    <br>
+                    <span class="date"><strong>Added:</strong> <%= new Date(book.add_date).toLocaleDateString() %></span>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <form action="/edit/<%= book.id %>" method="get" class="edit-button" >
+                    <input type="submit" class="edit-button" value="Edit">
+                </form>
+                <form action="/delete/<%= book.id %>" method="post" class="delete-button" >
+                    <input type="submit" class="delete-button" value="Delete">
+                </form>
+            </div>
+        </div>
+    <% }); %>
+</body>
+</html>
